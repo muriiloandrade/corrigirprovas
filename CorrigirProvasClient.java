@@ -8,15 +8,21 @@ public class CorrigirProvasClient {
         Scanner input = new Scanner(System.in);
         
         System.out.print("Informe a quantidade de questões: ");
-        int qntQuestoes = input.nextInt();
+        int qtdQuestoes = input.nextInt();
+        Questoes[] questoes = new Questoes[qtdQuestoes];
+        String respostas = "";
         
-        int[] questoes = new int[qntQuestoes];
-        /*
-            TODO: 
-            Itera por todas as questões
-            Insere a quantidade de alternativas
-            Insere as alternativas
-            Itera de novo e concatena todo mundo
-        */
+        for(int i=0;i<qtdQuestoes;i++){
+            System.out.printf("------------------------ %dª questão------------------------\n" 
+                            + "Quantidade de alternativas da questão: ", i+1);
+            questoes[i] = new Questoes();            
+            questoes[i].setQtdAlternativas(input.nextInt());
+            
+            System.out.print("Respostas do aluno: ");
+            questoes[i].setRespostas(input.next());
+            respostas += i+1 + ";" + questoes[i].getQtdAlternativas() + ";" + questoes[i].getRespostas();
+        }
+
+        System.out.println("Respostas como vão pro servidor: " + respostas);
     }
 }
