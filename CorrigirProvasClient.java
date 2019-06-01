@@ -24,11 +24,11 @@ public class CorrigirProvasClient {
             
             System.out.print("Respostas do aluno: ");
             questoes[i].setRespostas(input.next());
-            respostas += i+1 + ";" + questoes[i].getQtdAlternativas() + ";" + questoes[i].getRespostas();
+            respostas += i+1 + ";" + questoes[i].getQtdAlternativas() + ";" + questoes[i].getRespostas() + ";";
         }
 
         System.out.println("Respostas como vão pro servidor: " + respostas);
-
+        
         try {
             socket = new DatagramSocket();
             byte[] message = respostas.getBytes();
